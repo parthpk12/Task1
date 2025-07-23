@@ -8,7 +8,7 @@ const userRegister = async (req, res) => {
     const { username, email, password } = req.body;
     // console.log(req.body);
 
-    const [rows] = await db.query("select * from users where email = ?", [
+    const [rows] = await db.query("select * from users where email = $1", [
       email,
     ]);
     // console.log("here is the rows",rows);
@@ -32,7 +32,7 @@ const userRegister = async (req, res) => {
     const hash_pass = await bcrypt.hash(password, 10);
 
     await db.query(
-      "insert into users (username , email , password) values (?,?,?)",
+      "insert into users (username , email , password) values ($1,$2,$3)",
       [username, email, hash_pass]
     );
 
