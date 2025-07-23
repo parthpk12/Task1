@@ -2,7 +2,8 @@ const db = require("../utils/db");
 
 const getAllUsers = async (req, res) => {
   try {
-    const [usersData] = await db.query("select * from users");
+    // const [usersData] = await db.query("select * from users");
+    const { rows: usersData } = await db.query("SELECT * FROM users");
 
     res.json({
       message: "Users fetched successfully",

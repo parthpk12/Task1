@@ -8,14 +8,21 @@ const userRegister = async (req, res) => {
     const { username, email, password } = req.body;
     // console.log(req.body);
 
-    const [rows] = await db.query("select * from users where email = $1", [
+    // const [rows] = await db.query("select * from users where email = $1", [
+    //   email,
+    // ]);
+
+    const {rows} = await db.query("select * from users where email = $1", [
       email,
     ]);
+    if (rows[0]) {
+      return res.send("User already exists");
+    }
     // console.log("here is the rows",rows);
     // console.log("here is the data",rows[0]);
-    if (rows[0]) {
-      return res.send("User aleready exist");
-    }
+    // if (rows[0]) {
+    //   return res.send("User aleready exist");
+    // }
 
     if (!username || !email || !password) {
       return res.send("some fileds are missing");
