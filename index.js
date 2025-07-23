@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require("./utils/initDb");
 // const main = require("./utils/db");
 const cookieParser = require("cookie-parser");
 const userRouter = require("./routes/userRoute");
