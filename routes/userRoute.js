@@ -1,4 +1,5 @@
 const express = require("express");
+const checkAuth = require("../middlewares/tokenmiddleware");
 const userRouter = express.Router();
 const {
   userRegister,
@@ -9,7 +10,7 @@ const {
 
 userRouter.post("/register", userRegister);
 userRouter.post("/login", userLogin);
-userRouter.post("/logout",userLogout);
+userRouter.post("/logout", checkAuth , userLogout);
 userRouter.post("/assignRole", assignRole);
 
 module.exports = userRouter;

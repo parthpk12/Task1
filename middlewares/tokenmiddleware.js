@@ -1,14 +1,15 @@
 const jwt  = require("jsonwebtoken");
 
+
 const checkAuth  = async (req,res,next) => {
- try{
+    try{
      const {token} = req.cookies;
 
      if(!token){
       return res.send("token is not present");
      }
 
-     const decoded = jwt.verify(token, "Parth@3232");
+     const decoded = jwt.verify(token,process.env.JWT_SECRET);
      req.user = decoded;
      next(); 
  }

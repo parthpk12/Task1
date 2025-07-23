@@ -6,7 +6,8 @@ const userRouter = require("./routes/userRoute");
 const productRouter = require("./routes/productRoute");
 const stockRouter = require("./routes/stockRoute");
 const adminRouter = require("./routes/adminRoute");
-const port = 3000;
+require("dotenv").config();
+
 
 app.use(express.json());
 app.use(cookieParser());
@@ -14,8 +15,8 @@ app.use(cookieParser());
 app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/stock", stockRouter);
-app.use("/admin" , adminRouter);
+app.use("/admin", adminRouter);
 
-app.listen(port, () => {
-  console.log(`server is listening at PORT ${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`server is listening at PORT ${process.env.PORT}`);
 });

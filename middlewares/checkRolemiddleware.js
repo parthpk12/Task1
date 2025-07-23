@@ -4,8 +4,7 @@ const checkRole = (allowedRoles) => {
   return async (req, res, next) => {
     // console.log(allowedRoles);
     try {
-
-      // console.log(req.user);
+      console.log(req.user);
 
       // console.log("in the callback");
       const [roles] = await db.query(
