@@ -15,18 +15,22 @@ productRouter.post(
   checkRole(["Admin", "Product manager"]),
   createProduct
 );
+
 productRouter.get("/getProducts", checkAuth, getAllProducts);
+
 productRouter.delete(
   "/delete/:id",
   checkAuth,
   checkRole(["Admin","Product manager"]),
   deleteProduct
 );
+
 productRouter.put(
   "/update/:id",
   checkAuth,
   checkRole(["Admin", "Product manager"]),
   updateProduct
 );
+
 
 module.exports = productRouter;

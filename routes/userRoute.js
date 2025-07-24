@@ -9,8 +9,11 @@ const {
 } = require("../controllers/userController");
 
 userRouter.post("/register", userRegister);
-userRouter.post("/login", userLogin);
+
+userRouter.post("/login", checkAuth , userLogin);
+
 userRouter.post("/logout", checkAuth , userLogout);
+
 userRouter.post("/assignRole", assignRole);
 
 module.exports = userRouter;

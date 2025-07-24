@@ -19,6 +19,6 @@ app.use("/stock", stockRouter);
 app.use("/admin", adminRouter);
 
 
-  app.listen(process.env.PORT, () => {
-    console.log(`Server is listening at PORT ${process.env.PORT}`);
-  });
+app.listen(process.env.PORT, () => {
+  console.log(`Server is listening at PORT ${process.env.PORT}`);
+});

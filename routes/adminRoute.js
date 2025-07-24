@@ -9,8 +9,7 @@ const {
 } = require("../controllers/adminController");
 const adminRouter = express.Router();
 
-// adminRouter.get("/getAllUsers", checkAuth, checkRole(["Admin"]), getAllUsers);
-adminRouter.get("/getAllUsers",getAllUsers);
+adminRouter.get("/getAllUsers", checkAuth, checkRole(["Admin"]), getAllUsers);
 
 adminRouter.delete(
   "/deleteUser/:id",

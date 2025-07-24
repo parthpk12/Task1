@@ -4,14 +4,15 @@ const checkRole = (allowedRoles) => {
   return async (req, res, next) => {
     // console.log(allowedRoles);
     try {
-      console.log(req.user);
+      // console.log(req.user);
 
       // console.log("in the callback");
-      const [roles] = await db.query(
-        "select r.title from user_roles ur join roles r on ur.role_id = r.id where ur.user_id = ? ",
+      const {rows : roles} = await db.query(
+        "select r.title from user_roles ur join roles r on ur.role_id = r.id where ur.user_id = $1 ",
         [req.user.id]
       );
 
+      
       console.log(roles);
 
       const userRoles = roles.map((r) => r.title);
