@@ -10,7 +10,7 @@ const {
 
 userRouter.post("/register", userRegister);
 
-userRouter.post("/login", checkAuth , userLogin);
+userRouter.post("/login",userLogin);
 
 userRouter.post("/logout", checkAuth , userLogout);
 
