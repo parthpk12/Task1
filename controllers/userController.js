@@ -5,12 +5,13 @@ const jwt = require("jsonwebtoken");
 
 const userRegister = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    let { username, email, password } = req.body;
     // console.log(req.body);
 
     // const [rows] = await db.query("select * from users where email = $1", [
     //   email,
     // ]);
+
 
     const {rows} = await db.query("select * from users where email = $1", [
       email,
@@ -27,6 +28,8 @@ const userRegister = async (req, res) => {
     if (!username || !email || !password) {
       return res.send("some fileds are missing");
     }
+
+    email = email.trim().toLowerCase();
 
     if (!validator.isEmail(email)) {
       return res.send("email is not valid");
@@ -51,12 +54,14 @@ const userRegister = async (req, res) => {
 
 const userLogin = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    let { email, password } = req.body;
     if (!email || !password) {
       return res.send("some data missing");
     }
 
-    const [userData] = await db.query("select * from users where email = ?", [
+    email = email.trim().toLowerCase();
+
+    const {rows : userData }= await db.query("select * from users where email = $1", [
       email,
     ]);
     // console.log(userData[0]);
@@ -111,7 +116,7 @@ const assignRole = async (req, res) => {
       return res.send("Missing fields");
     }
 
-    await db.query("insert into user_roles(user_id , role_id) values(?,?)", [
+    await db.query("insert into user_roles(user_id , role_id) values($1,$2)", [
       user_id,
       role_id,
     ]);

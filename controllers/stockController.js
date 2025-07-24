@@ -8,7 +8,7 @@ const createStock = async (req, res) => {
       return res.send("Missing field for stock create");
     }
 
-    await db.query("insert into stock (product_id, quantity) value(?,?)", [
+    await db.query("insert into stock (product_id, quantity) values ($1,$2)", [
       id,
       quantity,
     ]);
@@ -30,7 +30,7 @@ const updateStock = async (req, res) => {
       return res.send("Missing fields for update stock");
     }
 
-    await db.query("update stock set quantity = ? where product_id = ?", [
+    await db.query("update stock set quantity = $1 where product_id = $2", [
       quantity,
       id,
     ]);
@@ -47,7 +47,7 @@ const deleteStock = async (req, res) => {
   try {
     const { id } = req.params;
 
-    await db.query("delete from stock where product_id = ?", [id]);
+    await db.query("delete from stock where product_id = $1", [id]);
 
     res.json({
       message: "Stock for product deleted successfully",
@@ -59,7 +59,7 @@ const deleteStock = async (req, res) => {
 
 const getAllStocks = async (req, res) => {
   try {
-    const [stockData] = await db.query(
+    const { rows: stockData } = await db.query(
       "select p.name,p.description,p.price,s.quantity from stock s join products p on p.id = s.product_id"
     );
 

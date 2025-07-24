@@ -9,7 +9,7 @@ const createProduct = async (req, res) => {
     }
 
     await db.query(
-      "insert into products(name,description,price) values(?,?,?)",
+      "insert into products(name,description,price) values ($1,$2,$3)",
       [name, description, price]
     );
 
@@ -23,7 +23,7 @@ const createProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   try {
-    const [allProducts] = await db.query("select * from products");
+    const {rows : allProducts} = await db.query("select * from products");
 
     console.log(allProducts);
 
@@ -40,7 +40,7 @@ const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
 
-    await db.query("delete from products where id = ?", [id]);
+    await db.query("delete from products where id = $1", [id]);
 
     res.json({
       message: "Product deleted Successfully",
@@ -58,7 +58,7 @@ const updateProduct = async (req, res) => {
     console.log("data for update",name,description,price);
 
     await db.query(
-      "update products set name=?,description=?, price=? where id=?",
+      "update products set name=$1,description=$2, price=$3 where id=$4",
       [name, description, price, id]
     );
 
