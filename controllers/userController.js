@@ -12,8 +12,7 @@ const userRegister = async (req, res) => {
     //   email,
     // ]);
 
-
-    const {rows} = await db.query("select * from users where email = $1", [
+    const { rows } = await db.query("select * from users where email = $1", [
       email,
     ]);
     if (rows[0]) {
@@ -61,10 +60,17 @@ const userLogin = async (req, res) => {
 
     email = email.trim().toLowerCase();
 
-    const {rows : userData }= await db.query("select * from users where email = $1", [
-      email,
-    ]);
-    // console.log(userData[0]);
+    const { rows: userData } = await db.query(
+      "select * from users where email = $1",
+      [email]
+    );
+    console.log(userData[0]);
+
+    const { rows: roles } = await db.query(
+      "select *from user_roles where user_id = $1",
+      [userData.id]
+    );
+    console.log(roles);
 
     if (!userData[0]) {
       return res.send("User not Found");
@@ -86,7 +92,12 @@ const userLogin = async (req, res) => {
     res.cookie("token", token, { maxAge: 100 * 100 * 3600 });
 
     res.json({
-      message: "Loggin successful",
+      message: "Login successful",
+      user: {
+        username: userData.username,
+        email: userData.email,
+        role: roles,
+      },
     });
   } catch (err) {
     res.send("problem for Login" + err.message);
@@ -95,7 +106,7 @@ const userLogin = async (req, res) => {
 
 const userLogout = async (req, res) => {
   try {
-    const {token} = req.cookies;
+    const { token } = req.cookies;
     console.log("here is a token", token);
 
     res.clearCookie("token");
