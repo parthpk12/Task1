@@ -15,7 +15,7 @@ const checkRole = (allowedRoles) => {
       
       console.log(roles);
 
-      const userRoles = roles.map((r) => r.title);
+      const userRoles = [...new Set(roles.map(r => r.title))];
 
       const hasAccess = allowedRoles.some((role) => userRoles.includes(role));
 

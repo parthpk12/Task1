@@ -3,6 +3,7 @@ const jwt  = require("jsonwebtoken");
 const checkAuth  = async (req,res,next) => {
     try{
      const {token} = req.cookies;
+     console.log("token is there ",token);
 
      if(!token){
       return res.send("token is not present");
