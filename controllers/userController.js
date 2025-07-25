@@ -68,7 +68,7 @@ const userLogin = async (req, res) => {
 
     const { rows: roles } = await db.query(
       "select r.title from user_roles ur join roles r on ur.role_id = r.id where ur.user_id = $1",
-      [userData.id]
+      [userData[0].id]
     );
     console.log(roles);
 
@@ -94,8 +94,8 @@ const userLogin = async (req, res) => {
     res.json({
       message: "Login successful",
       user: {
-        username: userData.username,
-        email: userData.email,
+        username: userData[0].username,
+        email: userData[0].email,
         role: roles,
       },
     });
