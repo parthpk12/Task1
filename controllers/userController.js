@@ -67,7 +67,7 @@ const userLogin = async (req, res) => {
     console.log(userData[0]);
 
     const { rows: roles } = await db.query(
-      "select *from user_roles where user_id = $1",
+      "select r.title from user_roles ur join roles r on ur.role_id = r.id where ur.user_id = $1",
       [userData.id]
     );
     console.log(roles);
