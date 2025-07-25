@@ -71,6 +71,9 @@ const userLogin = async (req, res) => {
       [userData[0].id]
     );
     console.log(roles);
+    
+    let newRoles = roles.map(r => r.title);
+     
 
     if (!userData[0]) {
       return res.send("User not Found");
@@ -96,7 +99,7 @@ const userLogin = async (req, res) => {
       user: {
         username: userData[0].username,
         email: userData[0].email,
-        role: roles,
+        role: newRoles,
       },
     });
   } catch (err) {
