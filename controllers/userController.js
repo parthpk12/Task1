@@ -72,7 +72,7 @@ const userLogin = async (req, res) => {
     );
     console.log(roles);
     
-    let newRoles = roles.map(r => r.title);
+    let newRoles = [...new Set(roles.map(r => r.title))];
      
 
     if (!userData[0]) {
