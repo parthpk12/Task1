@@ -92,7 +92,12 @@ const userLogin = async (req, res) => {
       }
     );
 
-    res.cookie("token", token, { maxAge: 100 * 100 * 3600 });
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None", 
+      maxAge: 1000 * 60 * 60 * 24, 
+    });
 
     res.json({
       message: "Login successful",
