@@ -1,7 +1,7 @@
 const express = require("express");
 const checkauthRouter = express.Router();
 const checkAuth = require("../middlewares/tokenmiddleware");
-const db = require("../configs/db");
+const db = require("")
 
 checkauthRouter.get("/", checkAuth, async (req, res) => {
   try {
@@ -19,7 +19,7 @@ checkauthRouter.get("/", checkAuth, async (req, res) => {
     res.json({
       message: "Auth success",
       data: {
-        
+        user: user,
         roles: userRoles,
       },
     });

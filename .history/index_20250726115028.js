@@ -27,7 +27,7 @@ app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/stock", stockRouter);
 app.use("/admin", adminRouter);
-app.use("/checkauth", checkAuth ,checkauthRouter);
+app.use("/checkauth", checkAuth,checkauthRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is listening at PORT ${process.env.PORT}`);

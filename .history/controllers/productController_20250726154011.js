@@ -23,7 +23,7 @@ const createProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   try {
-    const {rows : allProducts} = await db.query("select * from products where is_deleted = 'false' ");
+    const {rows : allProducts} = await db.query("select * from products where is_deleted");
 
     console.log(allProducts);
 

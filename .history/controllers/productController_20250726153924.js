@@ -23,7 +23,7 @@ const createProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   try {
-    const {rows : allProducts} = await db.query("select * from products where is_deleted = 'false' ");
+    const {rows : allProducts} = await db.query("select * from products");
 
     console.log(allProducts);
 
@@ -40,7 +40,7 @@ const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
 
-    await db.query("update products set is_deleted = 'true' where id = $1", [id]);
+    await db.query("delete from set is_deleted = 'truw products where id = $2", [id]);
 
     res.json({
       message: "Product deleted Successfully",
