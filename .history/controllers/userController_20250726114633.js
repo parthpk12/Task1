@@ -1,6 +1,6 @@
 const validator = require("validator");
 const bcrypt = require("bcrypt");
-const db = require("../configs/db");
+const db = require("../config/db");
 const jwt = require("jsonwebtoken");
 
 const userRegister = async (req, res) => {

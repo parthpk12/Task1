@@ -1,4 +1,4 @@
-const db = require("../configs/db");
+const db = require("../utils/db");
 
 const checkRole = (allowedRoles) => {
   return async (req, res, next) => {
