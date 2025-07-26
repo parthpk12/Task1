@@ -1,6 +1,7 @@
 const express = require("express");
 const checkauthRouter = express.Router();
 const checkAuth = require("../middlewares/tokenmiddleware");
+const db = require("../configs/db");
 
 checkauthRouter.get("/", checkAuth, async (req, res) => {
   try {
