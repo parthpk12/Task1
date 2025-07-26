@@ -9,7 +9,6 @@ const stockRouter = require("./routes/stockRoute");
 const adminRouter = require("./routes/adminRoute");
 const cors = require("cors");
 const checkAuth = require("./middlewares/tokenmiddleware");
-const checkauthRouter = require("./routes/checkauthRoute");
 require("dotenv").config();
 
 app.use(express.json());
@@ -27,7 +26,31 @@ app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/stock", stockRouter);
 app.use("/admin", adminRouter);
-app.use("/checkauth",checkAuth,checkauthRouter);
+app.use("/checkauth",checkAuth,async(req,res) => {
+      try{
+            const user = req.user;
+
+            const {rows : roles} = await db.query(
+                    "select r.title from user_roles ur join roles r on ur.role_id = r.id where ur.user_id = $1 ",
+                    [user.id]
+                  );
+                  
+            console.log(roles);
+            
+            const userRoles = [...new Set(roles.map(r => r.title))];
+
+            res.json({
+              message : "Auth success",
+              data : {
+                  user : user,
+                  roles : userRoles
+              }
+            })
+
+      }catch(err){
+            res.send("Error : "+err.message);
+      }
+})
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is listening at PORT ${process.env.PORT}`);

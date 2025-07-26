@@ -9,7 +9,6 @@ const stockRouter = require("./routes/stockRoute");
 const adminRouter = require("./routes/adminRoute");
 const cors = require("cors");
 const checkAuth = require("./middlewares/tokenmiddleware");
-const checkauthRouter = require("./routes/checkauthRoute");
 require("dotenv").config();
 
 app.use(express.json());
@@ -27,7 +26,8 @@ app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/stock", stockRouter);
 app.use("/admin", adminRouter);
-app.use("/checkauth",checkAuth,checkauthRouter);
+app.use("/checkauth",checkAuth,
+})
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is listening at PORT ${process.env.PORT}`);
