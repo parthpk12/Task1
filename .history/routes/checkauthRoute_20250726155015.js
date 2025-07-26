@@ -20,7 +20,6 @@ checkauthRouter.get("/", checkAuth, async (req, res) => {
     res.json({
       message: "Auth success",
       data: {
-       token : token,
         roles: userRoles,
       },
     });

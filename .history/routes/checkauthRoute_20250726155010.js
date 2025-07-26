@@ -6,7 +6,7 @@ const db = require("../configs/db");
 checkauthRouter.get("/", checkAuth, async (req, res) => {
   try {
     const user = req.user;
-    const {token}  = req.cookies;
+    const {token} 
 
     const { rows: roles } = await db.query(
       "select r.title from user_roles ur join roles r on ur.role_id = r.id where ur.user_id = $1 ",
@@ -20,7 +20,6 @@ checkauthRouter.get("/", checkAuth, async (req, res) => {
     res.json({
       message: "Auth success",
       data: {
-       token : token,
         roles: userRoles,
       },
     });
