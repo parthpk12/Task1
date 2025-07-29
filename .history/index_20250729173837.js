@@ -10,7 +10,6 @@ const adminRouter = require("./routes/adminRoute");
 const cors = require("cors");
 const checkAuth = require("./middlewares/tokenmiddleware");
 const checkauthRouter = require("./routes/checkauthRoute");
-const productFeedbackRouter = require("./routes/productFeedbackRoute");
 require("dotenv").config();
 
 app.use(express.json());

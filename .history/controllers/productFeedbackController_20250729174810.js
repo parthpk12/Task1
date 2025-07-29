@@ -1,0 +1,3 @@
+const GetAllFeedbacks  = (req,res) => {
+
+}
