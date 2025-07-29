@@ -134,7 +134,7 @@ const ProductFeedbackGive = async (req, res) => {
     const { feedback } = req.body;
 
     if(!ProductId || !id || feedback.length===0){
-      return res.send("Fields are missing");
+      return res.se
     }
 
     await db.query(
