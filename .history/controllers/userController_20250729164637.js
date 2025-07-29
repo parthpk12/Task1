@@ -138,8 +138,10 @@ const ProductFeedbackGive = async () => {
     await db.query("insert into product_feedack ('productId','id','feedback') values ($1,$2,$3)",[ProductId,id,feedback]);
 
     res.json({
-      message : "Feedback given successfully"
-    });
+      message : ""
+    })
+
+
 
   }catch(err){
     console.error("Error:"+err.message);

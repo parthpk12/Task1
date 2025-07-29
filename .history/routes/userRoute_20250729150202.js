@@ -5,7 +5,7 @@ const {
   userRegister,
   userLogin,
   userLogout,
-  ProductFeedbackGive
+  P
 } = require("../controllers/userController");
 
 userRouter.post("/register", userRegister);

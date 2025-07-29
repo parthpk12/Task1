@@ -32,6 +32,7 @@ productRouter.put(
   updateProduct
 );
 
+productRouter.post("/produ")
 
 
 module.exports = productRouter;

@@ -131,15 +131,7 @@ const userLogout = async (req, res) => {
 const ProductFeedbackGive = async () => {
   try{
 
-    const {ProductId} = req.params;
-    const {id} = req.user;
-    const {feedback} = req.body;
-
-    await db.query("insert into product_feedack ('productId','id','feedback') values ($1,$2,$3)",[ProductId,id,feedback]);
-
-    res.json({
-      message : "Feedback given successfully"
-    });
+    const 
 
   }catch(err){
     console.error("Error:"+err.message);

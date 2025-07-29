@@ -25,7 +25,7 @@ app.use(cookieParser());
 
 app.use("/user", userRouter);
 app.use("/product", productRouter);
-// app.use("/product_feedback",productFeedbackRouter);
+app.use("/product_feedback",productFeedback)
 app.use("/stock", stockRouter);
 app.use("/admin", adminRouter);
 app.use("/checkauth",checkauthRouter);

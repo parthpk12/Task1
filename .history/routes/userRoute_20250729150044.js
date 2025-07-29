@@ -4,8 +4,7 @@ const userRouter = express.Router();
 const {
   userRegister,
   userLogin,
-  userLogout,
-  ProductFeedbackGive
+  userLogout
 } = require("../controllers/userController");
 
 userRouter.post("/register", userRegister);
