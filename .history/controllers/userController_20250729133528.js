@@ -129,4 +129,4 @@ const userLogout = async (req, res) => {
 };
 
 
-module.exports = { userRegister, userLogin,  userLogout };
+module.exports = { userRegister, userLogin, assignRole, userLogout };

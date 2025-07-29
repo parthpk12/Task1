@@ -6,7 +6,7 @@ const {
   deleteUser,
   addRole,
   deleteRole,
-  assignRole
+  ass
 } = require("../controllers/adminController");
 const adminRouter = express.Router();
 
@@ -28,7 +28,7 @@ adminRouter.delete(
   deleteRole
 );
 
-adminRouter.post("/assignRole", checkAuth , checkRole["Admin"], assignRole);
+userRouter.post("/assignRole", assignRole);
 
 
 module.exports = adminRouter;

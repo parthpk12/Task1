@@ -28,7 +28,7 @@ adminRouter.delete(
   deleteRole
 );
 
-adminRouter.post("/assignRole", checkAuth , checkRole["Admin"], assignRole);
+userRouter.post("/assignRole", checkAuth , checkRole[] assignRole);
 
 
 module.exports = adminRouter;

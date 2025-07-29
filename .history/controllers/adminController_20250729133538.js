@@ -82,4 +82,4 @@ const assignRole = async (req, res) => {
 };
 
 
-module.exports = { getAllUsers, deleteUser, addRole, deleteRole , assignRole };
+module.exports = { getAllUsers, deleteUser, addRole, deleteRole };
