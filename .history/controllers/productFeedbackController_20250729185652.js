@@ -30,6 +30,7 @@ const getAllFeedBacksByProductId = async (req, res) => {
       data : allFB
      });
 
+
   } catch (err) {
     console.log("Error" + err.message);
     res.send("Error fetching product feedbacks by product id");
@@ -39,4 +40,4 @@ const getAllFeedBacksByProductId = async (req, res) => {
 
 
 
-module.exports = {GetAllFeedbacks , getAllFeedBacksByProductId};
+module.exports = {GetAllFeedbacks};

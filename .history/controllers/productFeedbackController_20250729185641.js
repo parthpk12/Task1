@@ -27,8 +27,12 @@ const getAllFeedBacksByProductId = async (req, res) => {
 
      res.json({
       message : "All Feedbacks fetched successfully",
-      data : allFB
-     });
+      
+     })
+
+
+
+
 
   } catch (err) {
     console.log("Error" + err.message);
@@ -39,4 +43,4 @@ const getAllFeedBacksByProductId = async (req, res) => {
 
 
 
-module.exports = {GetAllFeedbacks , getAllFeedBacksByProductId};
+module.exports = {GetAllFeedbacks};

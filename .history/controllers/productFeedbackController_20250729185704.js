@@ -39,4 +39,4 @@ const getAllFeedBacksByProductId = async (req, res) => {
 
 
 
-module.exports = {GetAllFeedbacks , getAllFeedBacksByProductId};
+module.exports = {GetAllFeedbacks , get};
