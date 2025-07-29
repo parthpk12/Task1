@@ -105,7 +105,7 @@ const userLogin = async (req, res) => {
         username: userData[0].username,
         email: userData[0].email,
         role: newRoles,
-        token : token
+        token : {token}
       },
     });
   } catch (err) {
