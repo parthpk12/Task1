@@ -2,7 +2,8 @@ const db = require("../configs/db");
 
 const GetAllFeedbacks  = async (req,res) => {
  try{ 
-   const {rows:allFeedBacks} = await db.query("select u.username , u.email , p.name , p.price , pf.feedback from product_feedback pf join users on pf.user_id = u.id join products on pf.product_id = p.id");
+   const {rows:allFeedBacks} = await db.query("select u.username , u.email , p.name , p.price , pf.feedback  
+    from product_feedback pf join users on pf.user_id = u.id join products on pf.product_id = p.id");
 
    res.json({
     message : "All data fetched successfully",
