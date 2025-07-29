@@ -18,7 +18,7 @@ checkauthRouter.get("/", checkAuth, async (req, res) => {
     const userRoles = [...new Set(roles.map((r) => r.title))];
 
     res.json({
-      success: true,
+      success: "Auth success",
       data: {
        token : token,
         roles: userRoles,
