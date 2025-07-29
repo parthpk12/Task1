@@ -71,8 +71,9 @@ const userLogin = async (req, res) => {
       [userData[0].id]
     );
     console.log(roles);
-
-    let newRoles = [...new Set(roles.map((r) => r.title))];
+    
+    let newRoles = [...new Set(roles.map(r => r.title))];
+     
 
     if (!userData[0]) {
       return res.send("User not Found");
@@ -94,8 +95,8 @@ const userLogin = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
-      sameSite: "None",
-      maxAge: 1000 * 60 * 60 * 24,
+      sameSite: "None", 
+      maxAge: 1000 * 60 * 60 * 24, 
     });
 
     res.json({
@@ -104,7 +105,7 @@ const userLogin = async (req, res) => {
         username: userData[0].username,
         email: userData[0].email,
         role: newRoles,
-        token: token,
+        token : token
       },
     });
   } catch (err) {
@@ -127,25 +128,23 @@ const userLogout = async (req, res) => {
   }
 };
 
-const ProductFeedbackGive = async (req, res) => {
-  try {
-    const { ProductId } = req.params;
-    const { id } = req.user;
-    const { feedback } = req.body;
+const ProductFeedbackGive = async (req,res) => {
+  try{
 
-    await db.query(
-      "insert into product_feedback (product_id, user_id, feedback) values ($1,$2,$3)",
-      [ProductId, id, feedback]
-    );
+    const {ProductId} = req.params;
+    const {id} = req.user;
+    const {feedback} = req.body;
+
+    await db.query("insert into product_feedack (productId,i','feedback') values ($1,$2,$3)",[ProductId,id,feedback]);
 
     res.json({
-      message: "Feedback given successfully",
+      message : "Feedback given successfully"
     });
-  } catch (err) {
+
+  }catch(err){
     console.error("Error:"+err.message);
-    return res.status(500).send("Error for product feedback");
+    return res.send("Error for product feedback")
   }
-};
+}
 
-
-module.exports = { userRegister, userLogin, userLogout, ProductFeedbackGive };
+module.exports = { userRegister, userLogin,  userLogout , ProductFeedbackGive };

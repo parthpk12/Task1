@@ -134,7 +134,7 @@ const ProductFeedbackGive = async (req, res) => {
     const { feedback } = req.body;
 
     await db.query(
-      "insert into product_feedback (product_id, user_id, feedback) values ($1,$2,$3)",
+      "insert into product_feedack (productId,id,'feedback') values ($1,$2,$3)",
       [ProductId, id, feedback]
     );
 
@@ -142,10 +142,9 @@ const ProductFeedbackGive = async (req, res) => {
       message: "Feedback given successfully",
     });
   } catch (err) {
-    console.error("Error:"+err.message);
-    return res.status(500).send("Error for product feedback");
+    console.error("Error:" + err.message);
+    return res.send("Error for product feedback");
   }
 };
-
 
 module.exports = { userRegister, userLogin, userLogout, ProductFeedbackGive };

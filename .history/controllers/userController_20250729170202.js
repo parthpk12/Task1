@@ -142,7 +142,7 @@ const ProductFeedbackGive = async (req, res) => {
       message: "Feedback given successfully",
     });
   } catch (err) {
-    console.error("Error:"+err.message);
+    console.error("Error: " + err.message);
     return res.status(500).send("Error for product feedback");
   }
 };
