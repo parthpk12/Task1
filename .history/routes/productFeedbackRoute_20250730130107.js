@@ -14,6 +14,8 @@ productFeedbackRouter.get("/getAllByUserId/:uid",getAllFeedBacksByUserId);
 
 productFeedbackRouter.delete("/deleteByUP/:uid/:pid" , deleteFeedbackByUserIdProductId );
 
+
+deleteAll of the same user
 productFeedbackRouter.delete("/deleteAllFeedbackByUserId/:uid",deleteFeedbackByUserId);
 
 // deleteAll of the same productId

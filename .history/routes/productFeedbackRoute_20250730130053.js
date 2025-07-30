@@ -2,7 +2,7 @@ const express = require("express");
 const productFeedbackRouter = express.Router();
 const checkAuth = require("../middlewares/tokenmiddleware");
 const checkRole = require("../middlewares/checkRolemiddleware");
-const { GetAllFeedbacks, getAllFeedBacksByProductId, getAllFeedBacksByUserId, deleteFeedbackByUserIdProductId, deleteFeedbackByUserId } = require("../controllers/productFeedbackController");
+const { GetAllFeedbacks, getAllFeedBacksByProductId, getAllFeedBacksByUserId, deleteFeedbackByUserIdProductId } = require("../controllers/productFeedbackController");
 
 productFeedbackRouter.use(checkAuth , checkRole(["Product manager"]));
 
@@ -14,6 +14,8 @@ productFeedbackRouter.get("/getAllByUserId/:uid",getAllFeedBacksByUserId);
 
 productFeedbackRouter.delete("/deleteByUP/:uid/:pid" , deleteFeedbackByUserIdProductId );
 
+
+// deleteAll of the same user
 productFeedbackRouter.delete("/deleteAllFeedbackByUserId/:uid",deleteFeedbackByUserId);
 
 // deleteAll of the same productId
