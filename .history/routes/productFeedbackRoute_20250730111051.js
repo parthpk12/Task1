@@ -10,7 +10,7 @@ productFeedbackRouter.get("/getAll",GetAllFeedbacks);
 
 productFeedbackRouter.get("/getAll/:pid",getAllFeedBacksByProductId);
 
-productFeedbackRouter.get("/getAllByUserId/:uid",getAllFeedBacksByUserId);
+productFeedbackRouter.get("/getAllByUserId/:",getAllFeedBacksByUserId);
 
 // make the getAll/:userId
 // delete by productId && userId
