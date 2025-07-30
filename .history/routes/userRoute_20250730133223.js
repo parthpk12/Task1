@@ -18,7 +18,7 @@ userRouter.post("/logout", checkAuth , userLogout);
 userRouter.post("/product_feedback/:pid",checkAuth,ProductFeedbackGive);
 
 
-userRouter.put("/updateFeedback/:pid",checkAuth,UpdateFeedbackByUserIdProductId);
+userRouter.put("/updateFeedback/:pid",checUpdateFeedbackByUserIdProductId);
 
 
 module.exports = userRouter;
