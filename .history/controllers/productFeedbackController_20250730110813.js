@@ -39,9 +39,9 @@ const getAllFeedBacksByProductId = async (req, res) => {
 const getAllFeedBacksByUserId = async (req,res) =>{
     try{
 
-     const {id:UserId} = req.params;
+     const {id} = req.params;
 
-     const {rows:allFB} = await db.query("select u.username,u.email,p.name,p.price,pf.feedback from feedback fb join users on fb.user_id  = u.id join products on fb.product_id = p.id where user_id = $1",[UserId]);
+     const {rows:allFB} = await db.query("select u.username,u.email,p.name,p.price,pf.feedback from feedback fb join users on fb.user_id  = u.id join products on fb.product_id = p.id where user_id = $1",[id]);
 
      res.json({
       message: "All Product Feedbacks fetched by UserId",
