@@ -60,7 +60,7 @@ const getAllFeedBacksByUserId = async (req, res) => {
   }
 };
 
-const deleteFeedbackByUserIdProductId = async (req, res) => {
+const deleteFeedbackByUserIdProductId = (req, res) => {
   try {
     const { uid, pid } = req.params;
     console.log("here are the ids", uid, pid);

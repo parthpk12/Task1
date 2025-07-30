@@ -60,12 +60,13 @@ const getAllFeedBacksByUserId = async (req, res) => {
   }
 };
 
-const deleteFeedbackByUserIdProductId = async (req, res) => {
+const deleteFeedbackByUserIdProductId = (req, res) => {
   try {
     const { uid, pid } = req.params;
+    
     console.log("here are the ids", uid, pid);
 
-    await db.query("delete from product_feedback where user_id = $1 and product_id = $2",[uid,pid]);
+    // await db.query("delete from product_feedback where user_id = $1 and product_id = $2",[uid,pid]);
 
     res.json({
       message: "Delete success by UserId and ProductId",
