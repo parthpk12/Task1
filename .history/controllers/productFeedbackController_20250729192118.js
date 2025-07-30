@@ -6,7 +6,7 @@ const GetAllFeedbacks  = async (req,res) => {
 
    res.json({
     message : "All data fetched successfully",
-     data : allFB
+     data : allFeedBacks
    })
  }
  catch(err){
@@ -41,12 +41,7 @@ const getAllFeedBacksByUserId = async (req,res) =>{
 
      const {id} = req.user;
 
-     const {rows:allFB} = await db.query("select u.username,u.email,p.name,p.price,pf.feedback from feedback fb join users on fb.user_id  = u.id join products on fb.product_id = p.id where user_id = $1",[id]);
-
-     res.json({
-      message: "All Product Feedbacks fetched by UserId",
-      data : allFB
-     })
+     await db.query("select u.username,u.email,p.name,")
 
     }
     catch(err){
@@ -55,4 +50,4 @@ const getAllFeedBacksByUserId = async (req,res) =>{
     }
 }
 
-module.exports = {GetAllFeedbacks , getAllFeedBacksByProductId , getAllFeedBacksByUserId};
+module.exports = {GetAllFeedbacks , getAllFeedBacksByProductId};

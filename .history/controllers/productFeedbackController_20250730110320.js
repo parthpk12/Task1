@@ -6,7 +6,7 @@ const GetAllFeedbacks  = async (req,res) => {
 
    res.json({
     message : "All data fetched successfully",
-     data : allFB
+     data : allF
    })
  }
  catch(err){

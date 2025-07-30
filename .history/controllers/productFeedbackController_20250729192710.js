@@ -6,7 +6,7 @@ const GetAllFeedbacks  = async (req,res) => {
 
    res.json({
     message : "All data fetched successfully",
-     data : allFB
+     data : allFeedBacks
    })
  }
  catch(err){
@@ -55,4 +55,4 @@ const getAllFeedBacksByUserId = async (req,res) =>{
     }
 }
 
-module.exports = {GetAllFeedbacks , getAllFeedBacksByProductId , getAllFeedBacksByUserId};
+module.exports = {GetAllFeedbacks , getAllFeedBacksByProductId , get};
