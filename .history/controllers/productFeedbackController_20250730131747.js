@@ -110,6 +110,9 @@ const deleteFeedbackByProductId = async (req, res) => {
   }
 };
 
+const UpdateFeedbackByUserIdProductId = async (req,res) => {
+
+}
 
 
 module.exports = {

@@ -110,6 +110,14 @@ const deleteFeedbackByProductId = async (req, res) => {
   }
 };
 
+const UpdateFeedbackByUserIdProductId = async (req,res) => {
+      try{
+
+      }
+      catch(err){
+        console.error("Error:")
+      }
+}
 
 
 module.exports = {

@@ -171,4 +171,4 @@ const UpdateFeedbackByUserIdProductId = async (req, res) => {
   }
 };
 
-module.exports = { userRegister, userLogin, userLogout, ProductFeedbackGive , UpdateFeedbackByUserIdProductId };
+module.exports = { userRegister, userLogin, userLogout, ProductFeedbackGive , Update };
