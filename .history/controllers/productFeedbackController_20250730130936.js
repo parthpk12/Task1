@@ -117,5 +117,5 @@ module.exports = {
   getAllFeedBacksByUserId,
   deleteFeedbackByUserIdProductId,
   deleteFeedbackByUserId,
-  deleteFeedbackByProductId
+  dele
 };
