@@ -47,8 +47,6 @@ const getAllFeedBacksByUserId = async (req,res) =>{
 
      const {rows:allFB} = await db.query("select u.username,u.email,p.name,p.price,pf.feedback from feedback fb join users on fb.user_id  = u.id join products on fb.product_id = p.id where user_id = $1",[UserId]);
 
-     console.log("allFb data by UserId",allFB);
-
      res.json({
       message: "All Product Feedbacks fetched by UserId",
       data : allFB
