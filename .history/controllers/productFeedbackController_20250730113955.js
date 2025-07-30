@@ -43,10 +43,10 @@ const getAllFeedBacksByUserId = async (req,res) =>{
      const {uid:UserId} = req.params;
 
      if(!UserId){
-      return res.send("No UserId present");
+      return res.se
      }
 
-     const {rows:allFB} = await db.query("select u.username,u.email,p.name,p.price,pf.feedback from product_feedback fb join users u  on pf.user_id  = u.id join products p on pf.product_id = p.id where user_id = $1",[UserId]);
+     const {rows:allFB} = await db.query("select u.username,u.email,p.name,p.price,pf.feedback from product_feedback fb join users u  on fb.user_id  = u.id join products p on fb.product_id = p.id where user_id = $1",[UserId]);
 
      console.log("allFb data by UserId",allFB);
 

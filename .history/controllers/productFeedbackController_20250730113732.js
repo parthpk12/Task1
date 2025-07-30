@@ -16,7 +16,6 @@ const GetAllFeedbacks  = async (req,res) => {
 };
 
 
-
 const getAllFeedBacksByProductId = async (req, res) => {
   try {
 
@@ -46,7 +45,7 @@ const getAllFeedBacksByUserId = async (req,res) =>{
       return res.send("No UserId present");
      }
 
-     const {rows:allFB} = await db.query("select u.username,u.email,p.name,p.price,pf.feedback from product_feedback fb join users u  on pf.user_id  = u.id join products p on pf.product_id = p.id where user_id = $1",[UserId]);
+     const {rows:allFB} = await db.query("select u.username,u.email,p.name,p.price,pf.feedback from product_feedback fb join users u  on fb.user_id  = u.id join products p on fb.product_id = p.id where user_id = $1",[UserId]);
 
      console.log("allFb data by UserId",allFB);
 
@@ -61,6 +60,8 @@ const getAllFeedBacksByUserId = async (req,res) =>{
      res.send("Error fetching Product Feedbacks by userId");
     }
 }
+
+
 
 
 
